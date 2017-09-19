@@ -1,0 +1,783 @@
+/*
+    So you like the style of impress.js demo?
+    Or maybe you are just curious how it was done?
+
+    You couldn't find a better place to find out!
+
+    Welcome to the stylesheet impress.js demo presentation.
+
+    Please remember that it is not meant to be a part of impress.js and is
+    not required by impress.js.
+    I expect that anyone creating a presentation for impress.js would create
+    their own set of styles.
+
+    But feel free to read through it and learn how to get the most of what
+    impress.js provides.
+
+    And let me be your guide.
+
+    Shall we begin?
+*/
+
+
+/*
+    We start with a good ol' reset.
+    That's the one by Eric Meyer http://meyerweb.com/eric/tools/css/reset/
+
+    You can probably argue if it is needed here, or not, but for sure it
+    doesn't do any harm and gives us a fresh start.
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*
+    Now here is when interesting things start to appear.
+
+    We set up <body> styles with default font and nice gradient in the background.
+    And yes, there is a lot of repetition there because of -prefixes but we don't
+    want to leave anybody behind.
+*/
+body {
+    font-family: 'PT Sans', sans-serif;
+    min-height: 740px;
+
+    background: rgb(215, 215, 215);
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
+    background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background:    -moz-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background:     -ms-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background:      -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background:         radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+}
+
+/*
+    Now let's bring some text styles back ...
+*/
+b, strong { font-weight: bold }
+i, em { font-style: italic }
+
+/*
+    ... and give links a nice look.
+*/
+a {
+    color: inherit;
+    text-decoration: none;
+    padding: 0 0.1em;
+    background: rgba(255,255,255,0.5);
+    text-shadow: -1px -1px 2px rgba(100,100,100,0.9);
+    border-radius: 0.2em;
+
+    -webkit-transition: 0.5s;
+    -moz-transition:    0.5s;
+    -ms-transition:     0.5s;
+    -o-transition:      0.5s;
+    transition:         0.5s;
+}
+
+a:hover,
+a:focus {
+    background: rgba(255,255,255,1);
+    text-shadow: -1px -1px 2px rgba(100,100,100,0.5);
+}
+
+/*
+    Because the main point behind the impress.js demo is to demo impress.js
+    we display a fallback message for users with browsers that don't support
+    all the features required by it.
+
+    All of the content will be still fully accessible for them, but I want
+    them to know that they are missing something - that's what the demo is
+    about, isn't it?
+
+    And then we hide the message, when support is detected in the browser.
+*/
+
+.fallback-message {
+    font-family: sans-serif;
+    line-height: 1.3;
+
+    width: 780px;
+    padding: 10px 10px 0;
+    margin: 20px auto;
+
+    border: 1px solid #E4C652;
+    border-radius: 10px;
+    background: #EEDC94;
+}
+
+.fallback-message p {
+    margin-bottom: 10px;
+}
+
+.impress-supported .fallback-message {
+    display: none;
+}
+
+/*
+    Now let's style the presentation steps.
+
+    We start with basics to make sure it displays correctly in everywhere ...
+*/
+
+.step {
+    position: relative;
+    height: 800px;
+    width: 1000px;
+    margin: 0px auto;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing:    border-box;
+    -ms-box-sizing:     border-box;
+    -o-box-sizing:      border-box;
+    box-sizing:         border-box;
+
+    font-family: 'PT Serif', georgia, serif;
+    font-size: 48px;
+    line-height: 1.5;
+}
+
+.step .notes {
+  display: none;
+}
+
+/*
+    ... and we enhance the styles for impress.js.
+
+    Basically we remove the margin and make inactive steps a little bit transparent.
+*/
+.impress-enabled .step {
+    margin: 0;
+    opacity: 0.3;
+
+    transition:         opacity 0.5s;
+}
+
+.impress-enabled .step.past {
+    opacity: 0;
+}
+
+.impress-enabled .step.future {
+    opacity: 0;
+}
+
+.impress-enabled .step.active { 
+    opacity: 1 
+}
+
+#about.future, #about.past { 
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+#about.active { 
+    opacity: 1;
+    transition: opacity 0.1s;
+}
+
+#talk.future, #talk.past { 
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+#talk.active { 
+    opacity: 1;
+    transition: opacity 0.1s;
+}
+
+#userfeeds-platform {
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    height: 800px;
+    width: 800px;
+    border-radius: 50%;/*make it pretty*/
+    border: 3px dotted #000;
+}
+
+#userfeeds-platform .title {
+    padding-top: 60px;
+}
+
+.impress-on-userfeeds-platform #database {opacity: 1;}
+.impress-on-userfeeds-platform #input {opacity: 1;}
+.impress-on-userfeeds-platform #output {opacity: 1;}
+.impress-on-userfeeds-platform #data-science {opacity: 1;}
+
+
+#input {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#input::after {
+    content: " ";
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 200px;
+    border-left: 1000px solid red;
+    border-top: 300px solid transparent;
+    border-bottom: 300px solid transparent;
+}
+
+.impress-on-input #userfeeds-platform {opacity: 0.6;}
+.impress-on-input #database {opacity: 0.6;}
+.impress-on-input #source-ethereum {opacity: 0.6;}
+.impress-on-input #source-http {opacity: 0.6;}
+.impress-on-input #source-other {opacity: 0.6;}
+.impress-on-input #data-processing {opacity: 0.6;}
+
+.impress-on-overview-claim-source #userfeeds-platform {opacity: 0.6;}
+.impress-on-overview-claim-source #database {opacity: 0.6;}
+.impress-on-overview-claim-source #input {opacity: 0.6;}
+.impress-on-overview-claim-source #source-ethereum {opacity: 0.6;}
+.impress-on-overview-claim-source #source-http {opacity: 0.6;}
+.impress-on-overview-claim-source #source-other {opacity: 0.6;}
+.impress-on-overview-claim-source #data-processing {opacity: 0.6;}
+
+
+#source-ethereum .cloud {
+    transform: scale(2.5); 
+    position: absolute; 
+    left: 300px; 
+    top: 500px;
+}
+
+#source-ethereum .cloud span {
+    padding-left: 80px;
+    font-size: 25px;
+}
+
+
+#source-http .cloud {
+    transform: scale(2.5); 
+    position: absolute; 
+    left: 300px; 
+    top: 500px;
+}
+
+#source-http .cloud span {
+    padding-left: 120px;
+    font-size: 30px;
+}
+
+#source-other .cloud.bitcoin {
+    position: absolute; 
+    left: 100px; 
+    top: 300px;
+}
+
+#source-other .cloud.bitcoin span {
+    padding-left: 100px;
+}
+
+#source-other .cloud.ipdb {
+    position: absolute; 
+    left: 600px; 
+    top: 300px;
+}
+
+#source-other .cloud.ipdb span {
+    padding-left: 100px;
+}
+
+#source-other .cloud.other {
+    position: absolute; 
+    left: 300px; 
+    top: 600px;
+}
+
+#source-other .cloud.other span {
+    padding-left: 100px;
+}
+
+.impress-on-overview-source-data-processing #input {
+    opacity: 1;
+}
+
+.impress-on-overview-source-data-processing #userfeeds-platform {opacity: 1;}
+.impress-on-overview-source-data-processing #database {opacity: 1;}
+.impress-on-overview-source-data-processing #input {opacity: 0.3;}
+.impress-on-overview-source-data-processing #source-ethereum {opacity: 0.6;}
+.impress-on-overview-source-data-processing #source-http {opacity: 0.6;}
+.impress-on-overview-source-data-processing #source-other {opacity: 0.6;}
+.impress-on-overview-source-data-processing #data-processing {opacity: 0.6;}
+
+
+#data-processing .processing {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 3px solid gray;
+    background-color: lightgray;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 250px;
+    left: 690px;
+}
+
+#data-processing .random {
+    position: absolute;
+    width: 300px;
+    height: 500px;
+    top: 100px;
+    left: 300px;
+}
+
+#data-processing .cloud {
+    transform: scale(0.6); 
+    position: absolute; 
+}
+
+#data-processing .cloud span {
+    padding-left: 120px;
+    font-size: 30px;
+}
+
+#data-processing .cloud.ethereum {
+    top: 50px;
+    left: 0px;
+}
+
+#data-processing .cloud.bitcoin {
+    top: 250px;
+    left: 0px;
+}
+
+#data-processing .cloud.http {
+    top: 450px;
+    left: 0px;
+}
+
+#data-processing .cloud.ipdb {
+    top: 650px;
+    left: 0px;
+}
+
+
+.impress-on-data-processing #database {opacity: 0.6;}
+.impress-on-data-processing #userfeeds-platform {opacity: 0.3;}
+
+
+#database {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 800px;
+    width: 800px;
+    border-radius: 50%;/*make it pretty*/
+    border: 3px solid #000;
+}
+
+#database-scarcity .cy {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#database-scarcity .cy canvas {
+  left: 0;
+  top: 0;
+}
+
+#database-claims .cy {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#database-claims .cy canvas {
+  left: 0;
+  top: 0;
+}
+
+.impress-on-database #userfeeds-platform {opacity: 0.3;}
+
+.impress-on-overview-db-output #userfeeds-platform {opacity: 1}
+.impress-on-overview-db-output #database {opacity: 1}
+.impress-on-overview-db-output #input {opacity: 0.3}
+.impress-on-overview-db-output #source-ethereum {opacity: 0.3}
+.impress-on-overview-db-output #source-http {opacity: 0.3}
+.impress-on-overview-db-output #source-other {opacity: 0.3}
+.impress-on-overview-db-output #data-processing {opacity: 0.3}
+.impress-on-overview-db-output #output {opacity: 1}
+.impress-on-overview-db-output #algorithms {opacity: 1}
+.impress-on-overview-db-output #api {opacity: 1}
+.impress-on-overview-db-output #interfaces {opacity: 1}
+
+
+#output {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#output::after {
+    content: " ";
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 200px;
+    border-right: 1000px solid blue;
+    border-top: 300px solid transparent;
+    border-bottom: 300px solid transparent;
+}
+
+.impress-on-output #database {opacity: 0.6;}
+.impress-on-output #userfeeds-platform {opacity: 0.6;}
+.impress-on-output #algorithms {opacity: 0.6;}
+.impress-on-output #api {opacity: 0.6;}
+
+#algorithms .random-in {
+    position: absolute;
+    top: 500px;
+    left: 0px;    
+    width: 300px;
+    height: 300px;
+}
+
+#algorithms .random-in::after {
+    content: " ";
+    border-right: 5px dotted black;
+    border-radius: 50%;
+    position: relative;
+    top: -64px;
+    left: 300px;
+    height: 500px;
+    display: block;
+}
+
+#algorithms .random-out {
+    position: absolute;
+    top: 500px;
+    left: 800px;    
+    width: 300px;
+    height: 300px;
+}
+
+.impress-on-algorithms #database {opacity: 0.6;}
+.impress-on-algorithms #userfeeds-platform {opacity: 0.3;}
+
+
+#algorithms-a .cy {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#algorithms-a .cy canvas {
+  left: 0;
+  top: 0;
+}
+
+#algorithms-b .cy {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#algorithms-b .cy canvas {
+  left: 0;
+  top: 0;
+}
+
+#algorithms-c .cy {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#algorithms-c .cy canvas {
+  left: 0;
+  top: 0;
+}
+
+
+.impress-on-overview-algo-api #output {opacity: 0.6;}
+.impress-on-overview-algo-api #algorithms {opacity: 0.6;}
+.impress-on-overview-algo-api #api {opacity: 0.6;}
+.impress-on-overview-algo-api #database {opacity: 0.6;}
+.impress-on-overview-algo-api #userfeeds-platform {opacity: 0.3;}
+
+
+.impress-on-overview-api-interfaces #output {opacity: 0.6;}
+.impress-on-overview-api-interfaces #algorithms {opacity: 0.6;}
+.impress-on-overview-api-interfaces #api {opacity: 0.6;}
+.impress-on-overview-api-interfaces #database {opacity: 0.6;}
+.impress-on-overview-api-interfaces #userfeeds-platform {opacity: 0.3;}
+
+
+#data-science {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#data-science::after {
+    content: " ";
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 0;
+    border-bottom: 800px solid red;
+    border-left: 300px solid transparent;
+    border-right: 300px solid transparent;
+}
+
+.impress-on-overview-output-data-science #userfeeds-platform {opacity: 0.6}
+.impress-on-overview-output-data-science #database {opacity: 0.6}
+.impress-on-overview-output-data-science #input {opacity: 0.6}
+.impress-on-overview-output-data-science #source-ethereum {opacity: 0.6}
+.impress-on-overview-output-data-science #source-http {opacity: 0.6}
+.impress-on-overview-output-data-science #source-other {opacity: 0.6}
+.impress-on-overview-output-data-science #data-processing {opacity: 0.6}
+.impress-on-overview-output-data-science #output {opacity: 0.6}
+.impress-on-overview-output-data-science #algorithms {opacity: 0.6}
+.impress-on-overview-output-data-science #api {opacity: 0.6}
+.impress-on-overview-output-data-science #interfaces {opacity: 0.6}
+.impress-on-overview-output-data-science #data-science {opacity: 1}
+.impress-on-overview-output-data-science #data-science-fraud-detation {opacity: 1}
+
+
+.impress-on-overview-end #userfeeds-platform {opacity: 1}
+.impress-on-overview-end #database {opacity: 1}
+.impress-on-overview-end #input {opacity: 1}
+.impress-on-overview-end #source-ethereum {opacity: 1}
+.impress-on-overview-end #source-http {opacity: 1}
+.impress-on-overview-end #source-other {opacity: 1}
+.impress-on-overview-end #data-processing {opacity: 1}
+.impress-on-overview-end #output {opacity: 1}
+.impress-on-overview-end #algorithms {opacity: 1}
+.impress-on-overview-end #api {opacity: 1}
+.impress-on-overview-end #interfaces {opacity: 1}
+.impress-on-overview-end #data-science {opacity: 1}
+.impress-on-overview-end #data-science-fraud-detation {opacity: 1}
+
+
+
+.overview { display: none }
+
+.hint {
+    /*
+        We hide the hint until presentation is started and from browsers not supporting
+        impress.js, as they will have a linear scrollable view ...
+    */
+    display: none;
+
+    /*
+        ... and give it some fixed position and nice styles.
+    */
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 200px;
+
+    background: rgba(0,0,0,0.5);
+    color: #EEE;
+    text-align: center;
+
+    font-size: 50px;
+    padding: 20px;
+
+    z-index: 100;
+
+    /*
+        By default we don't want the hint to be visible, so we make it transparent ...
+    */
+    opacity: 0;
+
+    transform:         translateY(400px);
+
+    transition:         opacity 1s,         transform 0.5s 1s;
+}
+
+/*
+    Now we 'enable' the hint when presentation is initialized ...
+*/
+.impress-enabled .hint { display: block }
+
+.impress-on-first .hint {
+    opacity: 1;
+
+    transform:  translateY(0px);
+    transition: opacity 1s 2s, transform 0.5s 1.5s;
+}
+
+.impress-enabled          { pointer-events: none }
+.impress-enabled #impress { pointer-events: auto }
+
+
+
+
+/* Utils */
+.cloud {
+    background: #fff;
+    background: -moz-linear-gradient(top,  #fff 5%, #f1f1f1 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(5%,#fff), color-stop(100%,#f1f1f1));
+    background: -webkit-linear-gradient(top,  #fff 5%,#f1f1f1 100%);
+    background: -o-linear-gradient(top,  #fff 5%,#f1f1f1 100%);
+    background: -ms-linear-gradient(top,  #fff 5%,#f1f1f1 100%);
+    background: linear-gradient(top,  #fff 5%,#f1f1f1 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#f1f1f1',GradientType=0 );
+    
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    
+    -webkit-box-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
+
+    height: 120px;
+    position: relative;
+    width: 350px;
+}
+
+.cloud:after, .cloud:before {
+    background: #fff;
+    content: '';
+    position: absolute;
+    z-indeX: -1;
+}
+
+.cloud:after {
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+
+    height: 100px;
+    left: 50px;
+    top: -50px;
+    width: 100px;
+}
+
+.cloud:before {
+    -webkit-border-radius: 200px;
+    -moz-border-radius: 200px;
+    border-radius: 200px;
+
+    width: 180px;
+    height: 180px;
+    right: 50px;
+    top: -90px;
+}
+
+.account {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid blue;
+    background-color: lightblue;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.claim {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid green;
+    background-color: lightgreen;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.data-red {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid red;
+    background-color: lightred;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.data-green {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid green;
+    background-color: lightgreen;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.data-blue {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid blue;
+    background-color: lightblue;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

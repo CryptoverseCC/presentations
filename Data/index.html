@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <title>Userfeeds Data</title>
+    <meta name="author" content="Userfeeds" />
+    <script src="js/cytoscape.min.js"></script>
+    <script src="js/weaver.min.js"></script>
+    <script src="js/cytoscape-spread.js"></script>
+    <script src="js/cytoscape-cose-bilkent.js"></script>
+    <style type="text/css">
+      .graph {
+        height: 1000px;
+        width: 1000px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="transfers">
+      <h1>Transfers</h1>
+      <div class="graph"></div>
+      <button class="export">Export</button>
+    </div>
+    <script src="js/vis/transfers.js"></script>
+
+    
+    <div class="claims">
+      <h1>Claims</h1>
+      <div class="graph"></div>
+      <button class="export">Export</button>
+    </div>
+
+    <script src="js/vis/claims.js"></script>
+
+    <div class="claims-full">
+      <h1>Claims</h1>
+      <div class="graph"></div>
+      <button class="export">Export</button>
+    </div>
+
+    <script src="js/vis/claims-full.js"></script>
+  </body>
+</html>

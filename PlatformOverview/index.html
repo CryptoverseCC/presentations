@@ -1,0 +1,788 @@
+<!doctype html>
+
+<!--
+
+    Welcome to the light side of the source, young padawan.
+
+    One step closer to learn something interesting you are...
+
+                               ____                  
+                            _.' :  `._               
+                        .-.'`.  ;   .'`.-.           
+               __      / : ___\ ;  /___ ; \      __  
+             ,'_ ""=-.:__;".-.";: :".-.":__;.-="" _`,
+             :' `.t""=-.. '<@.`;_  ',@:` ..-=""j.' `;
+                  `:-.._J '-.-'L__ `-.-' L_..-;'     
+                    "-.__ ;  .-"  "-.  : __.-"       
+                        L ' /.======.\ ' J           
+                         "-.   "__"   .-"            
+                        __.l"-:_JL_;-";.__           
+                     .-j/'.;  ;""""  / .'\"-.        
+                   .' /:`. "-.:     .-" .';  `.      
+                .-"  / ;  "-. "-..-" .-"  :    "-.   
+             .+"-.  : :      "-.__.-"      ;-._   \  
+             ; \  `.; ;                    : : "+. ; 
+             :  ;   ; ;                    : ;  : \: 
+             ;  :   ; :                    ;:   ;  : 
+            : \  ;  :  ;                  : ;  /  :: 
+            ;  ; :   ; :                  ;   :   ;: 
+            :  :  ;  :  ;                : :  ;  : ; 
+            ;\    :   ; :                ; ;     ; ; 
+            : `."-;   :  ;              :  ;    /  ; 
+             ;    -:   ; :              ;  : .-"   : 
+             :\     \  :  ;            : \.-"      : 
+              ;`.    \  ; :            ;.'_..-=  / ; 
+              :  "-.  "-:  ;          :/."      .'  :
+               \         \ :          ;/  __        :
+                \       .-`.\        /t-""  ":-+.   :
+                 `.  .-"    `l    __/ /`. :  ; ; \  ;
+                   \   .-" .-"-.-"  .' .'j \  /   ;/ 
+                    \ / .-"   /.     .'.' ;_:'    ;  
+                     :-""-.`./-.'     /    `.___.'   
+                           \ `t  ._  /               
+                            "-.t-._:'                
+
+-->
+
+<!--
+    
+    So you'd like to know how to use impress.js?
+    
+    You've made the first, very important step - you're reading the source code.
+    And that's how impress.js presentations are built - with HTML and CSS code.
+    
+    Believe me, you need quite decent HTML and CSS skills to be able to use impress.js effectively.
+    More importantly, you need to be a designer. There are no default styles or layouts for impress.js presentations.
+    
+    You need to design and build it by hand.
+    
+    So...
+    
+    Would you still like to know how to use impress.js?
+    
+-->
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Userfeeds Platform (using impress.js)</title>
+    <meta name="author" content="Grzegorz Kapkowski" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="js/cytoscape.min.js"></script>
+    <script src="js/weaver.min.js"></script>
+    <script src="js/cytoscape-spread.js"></script>
+    <script src="js/cytoscape-cose-bilkent.js"></script>
+</head>
+
+<body class="impress-not-supported">
+
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+
+    <div id="about" class="step" data-x="0" data-y="-10000" data-z="0" data-scale="1">
+        Start
+
+        G
+        g@userfeeds.io
+    </div>
+
+    <div id="talk" class="step" data-x="0" data-y="-9000" data-z="0" data-scale="1">
+        High level overview of Userfeeds Platform technology.
+    </div>
+
+    <div id="userfeeds-platform" class="step" data-x="0" data-y="0" data-scale="10">
+        <span class="title">Userfeeds Platform</span>
+    </div>
+
+    <div id="input" class="step" data-x="-5000" data-y="0" data-scale="6">
+        <pre>
+        - Data Sources
+            - Scarcity data
+            - Claims data
+        - Data processing
+        </pre>
+    </div>
+
+    <div id="claim" class="step" data-x="-5000" data-y="0" data-z="-500" data-rotate-y="90" data-scale="1">    
+        What is Claim?
+        <br/>
+        Digital equivalent of pointing a finger
+        <br/>
+        Me (private key) --points-to--> Something (URL, other Identifier)
+    </div>
+
+    <div id="claim-example" class="step" data-x="-5000" data-y="0" data-z="-1000" data-rotate-y="90" data-scale="1">    
+        <pre>
+          {
+            claim: {
+              target: "some identifier"
+            }
+            signature: {...signed by private key X ...}
+          }
+        </pre>
+        Real schema is a bit more complex with additional metadata that can be passed along with basic claim.
+    </div>
+
+    <div id="overview-claim-source" class="step overview" data-x="-5000" data-y="0" data-scale="6">
+    </div>
+
+    <div id="source-ethereum" class="step" data-x="-7000" data-y="-1000" data-scale="1">
+        Ethereum Network
+
+        Scarcity: value transfers (ETH/Tokens)
+        Claims: contract events
+
+        <div class="cloud"><span>Ethereum Network</span></div>
+    </div>
+
+    <div id="source-http" class="step" data-x="-7000" data-y="0" data-scale="1">
+        Internet (HTTP)
+
+        Claims: through simple HTTP API
+
+        <div class="cloud"><span>Internet</span></div>
+    </div>
+
+    <div id="source-other" class="step" data-x="-7000" data-y="1000" data-scale="1">
+        Bitcoin (value transfers)
+        IPDB (value transfers, claims)
+        Other scarcity/claims sources
+
+        <div class="cloud bitcoin"><span>Bitcoin</span></div>
+        <div class="cloud ipdb"><span>IPDB</span></div>
+        <div class="cloud other"><span>Other</span></div>
+
+        <div class="notes">
+          <ul>
+            <li>Userfeeds Paltform is blockchain agnostic</li>
+          </ul>
+        </div>
+    </div>
+
+    <div id="overview-source-data-processing" class="step overview" data-x="-5000" data-y="0" data-scale="6">
+    </div>
+
+    <div id="data-processing" class="step" data-x="-3000" data-y="0" data-scale="2">
+        <div class="cloud ethereum"><span>Ethereum</span></div>
+        <div class="cloud bitcoin"><span>Bitcoin</span></div>
+        <div class="cloud http"><span>HTTP</span></div>
+        <div class="cloud ipdb"><span>IPDB</span></div>
+        <div class="random">
+          <div class="account">0x123</div>
+          <div class="account">0x456</div>
+          <div class="account">0x789</div>
+          <div class="account">0xabc</div>
+          <div class="account">0xdef</div>
+          <div class="account">0xghi</div>
+          <div class="claim">Claim</div>
+          <div class="claim">Claim</div>
+          <div class="claim">Claim</div>
+          <div class="claim">Claim</div>
+          <div class="claim">Claim</div>
+          <div class="claim">Claim</div>
+          <div class="claim">Claim</div>
+        </div>
+        <div class="processing">Data processing</div>
+    </div>
+
+    <div id="database" class="step" data-x="0" data-y="0" data-scale="5">
+        Database(s)
+    </div>
+
+    <div id="database-scarcity" class="step" data-x="0" data-y="0" data-z="-4000" data-rotate-y="90" data-scale="1">
+        Accounts and value transfers (ETH/ERC20/Other assets)
+        <div class="cy"></div>
+    </div>
+
+    <div id="database-claims" class="step" data-x="0" data-y="0" data-z="-4500" data-rotate-y="90" data-scale="2">
+        Claims
+        <div class="cy"></div>
+    </div>
+
+    <div id="overview-db-output" class="step overview" data-x="0" data-y="0" data-scale="15">
+    </div>
+
+    <div id="output" class="step" data-x="5000" data-y="0" data-scale="6">
+        <pre>
+        Output:
+        - Algorithms
+        - API
+
+        Interfaces
+        </pre>
+    </div>
+
+    <div id="algorithms" class="step" data-x="2600" data-y="0" data-scale="1">
+        Algorithms - Data Interpretation Layer
+
+        <br/>
+        <br/>
+
+        <i>Algorithms define what meaning there is inside data and what should be taken in to account</i>
+
+        <div class="random-in">
+          <div class="data-red">http://A/</div>
+          <div class="data-green">http://B/</div>
+          <div class="data-red">http://C/</div>
+          <div class="data-green">http://D/</div>
+          <div class="data-blue">http://E/</div>
+          <div class="data-red">http://F/</div>
+          <div class="data-green">http://G/</div>
+          <div class="data-red">http://H/</div>
+          <div class="data-green">http://I/</div>
+          <div class="data-blue">http://J/</div>
+          <div class="data-red">http://K/</div>
+          <div class="data-green">http://L/</div>
+          <div class="data-red">http://M/</div>
+          <div class="data-green">http://N/</div>
+          <div class="data-blue">http://O/</div>
+        </div>
+
+        <div class="random-out">
+          <div class="data-green">http://B/</div>
+          <div class="data-green">http://D/</div>
+          <div class="data-green">http://G/</div>
+          <div class="data-green">http://I/</div>
+          <div class="data-green">http://L/</div>
+          <div class="data-green">http://N/</div>
+        </div>
+
+        <div class="notes">
+          <ul>
+            <li>Looking at raw data could be fun but when you have limited attention you need something that will help you notice the important parts</li>
+            <li>And this helper should as transparent as possible, because you need to trust him</li>
+            <li>Trusting closed source algorithms that cannot be investigated or swapped for other led to many confused people</li>
+            <li>Our Algorithms will be open source</li>
+          </ul>
+        </div>
+    </div>
+
+    <div id="algorithms-a" class="step" data-x="500" data-y="0" data-z="-4500" data-rotate-y="90" data-scale="2">
+        Algorithm A - Claims of type X
+        <div class="cy"></div>
+    </div>
+    <div id="algorithms-b" class="step" data-x="1000" data-y="0" data-z="-4500" data-rotate-y="90" data-scale="2">
+        Algorithm B - Combined feed from addresses holding tokens X
+        <div class="cy"></div>
+    </div>
+    <div id="algorithms-c" class="step" data-x="1500" data-y="0" data-z="-4500" data-rotate-y="90" data-scale="2">
+        Algorithm C - Single userfeed
+        <div class="cy"></div>
+    </div>
+
+    <div id="algorithms-community" class="step" data-x="2000" data-y="0" data-z="-8500" data-rotate-y="90" data-scale="10">
+        Open platform for Algorithm Developers
+        
+        <div class="notes">
+          <ul>
+            <li>More complex, specialized algorithms</li>
+            <li>Could be based on transaction history</li>
+            <li>Cloud be taking into account more than one token</li>
+            <li>Combining public data with private data</li>
+            <li>Available through centralized platforms (eg. github.com/bitbuket) and decentralized sources ipfs/swarm etc.</li>
+          </ul>
+        </div>
+    </div>
+
+    <div id="overview-algo-api" class="step overview" data-x="5000" data-y="0" data-scale="6">
+    </div>
+
+    <div id="api" class="step" data-x="3500" data-y="0" data-scale="1">
+        API (HTTP)
+        <hr/>
+        <br/>
+        <i style="word-wrap: break-word;"><a href="https://api.userfeeds.io/ranking/0xcd73518680ab60ec2253841909d3448bc60f0665/links/?asset=rinkeby">https://api.userfeeds.io/ranking/0xcd73518680ab60ec2253841909d3448bc60f0665/links/?asset=rinkeby</a></i>
+        
+        <div class="notes">
+          <ul>
+            <li>Why not some sophisticated solution or distributed architecture?</li>
+            <li>We decided to use HTTP API because of it's simplicity and wide spread use.</li>
+            <li>Practically every developer knows how to retrieve data using simple HTTP GET request.</li>
+            <li>The mystery is only limited to URL construction and this can easily demonstrated with examples and documentation.</li>
+            <li>* Read only with exception for sending claims through HTTP</li>
+        </div>
+    </div>
+
+    <div id="overview-api-interfaces" class="step overview" data-x="5000" data-y="0" data-scale="6">
+    </div>
+
+    <div id="interfaces" class="step" data-x="4000" data-y="0" data-scale="1">
+        Interfaces
+        <br/>
+        Everything we see and hear is coming from some king of interface.
+        
+        <div class="notes">
+          <ul>
+            <li>Interface examples: facebook feed, subreddits, twitter feed</li>
+          </ul>
+        </div>
+    </div>
+
+    <div id="interfaces-problems" class="step" data-x="4500" data-y="0" data-scale="1">
+        Current interfaces problems
+        <br/>
+        Interfaces gather our attention and direct it according to their owners decisions to maximize profits according to its monetization model.
+      
+        <div class="notes">
+          <ul>
+            <li>Example: `You might also like` section on any webpage, `Recommended` etc all of those are there because it's beneficial for site owner to keep you longer on site or give you more buying options</li>
+            <li>Current monetization models are mostly ad driven</li>
+            <li>Attention is extracted mercilessly because the risks for extracting attention are pushed back in time</li>
+            <li>Current interfaces don't want to answer question: `Why do I see this?`</li>
+            <li>We want change that and make it possible to investigate exactly what data were used and what algorithms to display information that you see.</li>
+          </ul>
+        </div>
+    </div>
+
+    <div id="link-exchange" class="step" data-x="5000" data-y="0" data-scale="1">
+        Link Exchange - Interface that tells you exactly why you are seeing given link.
+        <br/>
+        <br/>
+        Demo: 
+        <br/>
+        <a target="_blank" href="http://rinkeby.etherscan.io">http://rinkeby.etherscan.io</a>
+        <div class="notes">
+          <ul>
+            <li>LinkExchange is a solution for very specific problem and does not exhaust possibilities of Userfeeds Platform</li>
+          </ul>
+        </div>
+    </div>
+
+    <div id="interfaces-other" class="step" data-x="5500" data-y="0" data-scale="1">
+      Interface Examples:
+
+      <ul>
+        <li>Attention Guard</li>
+        <li>Governance</li>
+        <li>News</li>
+      </ul>
+
+      <div class="notes">
+        <ul>
+          <li>Attention Guard - interface showing messages from given sources, but only if a message is accompanied by economic sacrifice. (eg. holding tokens fro long time, simple payment, etc.)</li>
+          <li>Governance - Showing vote results among all token holders each with power equal to token holdings. (with additional restrictions, blacklisted addresses/chains of addresses)</li>
+          <li>News - Items sorted by accumulated score based on token holdings/transaction history/other data</li>
+          <li>Each of those interfaces will require customized algorithm, but after first algorithm is created all interfaces can use it</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="overview-output-data-science" class="step overview" data-x="0" data-y="0" data-scale="15">
+    </div>
+
+    <div id="data-science" class="step" data-x="0" data-y="3000" data-scale="3">
+        Data enrichment:
+
+        Data Scientists will be able to download whole dataset and process it in ways that can be done only offline.
+        Later they will be able to post results of their processing as `claims` back to dataset for `algorithms` use.
+    </div>
+
+    <div id="data-science-fraud-detection" class="step" data-x="-1000" data-y="3800" data-scale="1">
+        Example analysis: fraud detection and address blacklisting (eg. hacking related addresses)
+    </div>
+
+    <!--
+        
+        So to summarize of all the possible attributes used to position presentation steps, we have:
+        
+        * `data-x`, `data-y`, `data-z` - they define the position of **the center** of step element on
+            the canvas in pixels; their default value is 0;
+        * `data-rotate-x`, `data-rotate-y`, 'data-rotate-z`, `data-rotate` - they define the rotation of
+            the element around given axis in degrees; their default value is 0; `data-rotate` and `data-rotate-z`
+            are exactly the same;
+        * `data-scale` - defines the scale of step element; default value is 1
+        
+        These values are used by impress.js in CSS transformation functions, so for more information consult
+        CSS transfrom docs: https://developer.mozilla.org/en/CSS/transform
+        
+    -->
+    <div id="overview-end" class="step overview" data-x="0" data-y="0" data-scale="15">
+    </div>
+
+</div>
+
+<div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+</div>
+<script>
+if ("ontouchstart" in document.documentElement) { 
+    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+}
+
+scatter = (el) => {
+  el.style.position = 'absolute';
+  el.style.left = Math.floor( Math.random() * el.parentNode.clientWidth) + "px";
+  el.style.top = Math.floor( Math.random() * el.parentNode.clientHeight) + "px";
+}
+
+document.querySelectorAll('#data-processing .account').forEach(scatter);
+document.querySelectorAll('#data-processing .claim').forEach(scatter);
+
+document.querySelectorAll('#algorithms .data-red').forEach(scatter);
+document.querySelectorAll('#algorithms .data-green').forEach(scatter);
+document.querySelectorAll('#algorithms .data-blue').forEach(scatter);
+
+accountNodes = [
+  { data: { id: '0x123', name: '0x123', faveColor: 'lightblue' } },
+  { data: { id: '0x456', name: '0x456', faveColor: 'lightblue' } },
+  { data: { id: '0x789', name: '0x789', faveColor: 'lightblue' } },
+  { data: { id: '0xabc', name: '0xabc', faveColor: 'lightblue' } },
+  { data: { id: '0xdef', name: '0xdef', faveColor: 'lightblue' } },
+  { data: { id: '0xghi', name: '0xghi', faveColor: 'lightblue' } },
+  { data: { id: '0xjkl', name: '0xjkl', faveColor: 'lightblue' } },
+  { data: { id: '0xmno', name: '0xmno', faveColor: 'lightblue' } },
+]
+accountEdges = [
+  { data: { source: '0x123', target: '0x456', faveColor: 'blue' } },
+  
+  { data: { source: '0x456', target: '0x123', faveColor: 'blue' } },
+  { data: { source: '0x456', target: '0x789', faveColor: 'blue' } },
+  { data: { source: '0x456', target: '0xdef', faveColor: 'blue' } },
+  { data: { source: '0x456', target: '0xmno', faveColor: 'blue' } },
+  { data: { source: '0x456', target: '0xjkl', faveColor: 'blue' } },
+
+  { data: { source: '0xabc', target: '0xjkl', faveColor: 'blue' } },
+
+  { data: { source: '0xdef', target: '0xghi', faveColor: 'blue' } },
+
+  { data: { source: '0xmno', target: '0xabc', faveColor: 'blue' } },
+]
+
+cytoscape({
+  container: document.querySelector('#database-scarcity .cy'),
+  elements: {
+    nodes: accountNodes,
+    edges: accountEdges
+  },
+  layout: {
+    name: 'cose-bilkent',
+    animate: false
+  },
+  style: cytoscape.stylesheet()
+    .selector('node')
+      .css({
+        'shape': 'ellipse',
+        'width': 40,
+        'content': 'data(name)',
+        'text-valign': 'center',
+        'background-color': 'data(faveColor)',
+        'color': 'black',
+        'font-size': '10px',
+      })
+    .selector('edge')
+      .css({
+        'curve-style': 'bezier',
+        'width': 1,
+        'opacity': 0.666,
+        'target-arrow-shape': 'triangle',
+        'line-color': 'data(faveColor)',
+        'source-arrow-color': 'data(faveColor)',
+        'target-arrow-color': 'data(faveColor)'
+      })
+});
+
+// Database Claims
+cytoscape({
+  container: document.querySelector('#database-claims .cy'),
+  elements: {
+    nodes: accountNodes.concat([
+      { data: { id: 'claim:a', name: 'Claim', faveColor: 'lightgreen' } },
+      { data: { id: 'claim:b', name: 'Claim', faveColor: 'lightgreen' } },
+      { data: { id: 'claim:c', name: 'Claim', faveColor: 'lightgreen' } },
+      { data: { id: 'claim:d', name: 'Claim', faveColor: 'lightgreen' } },
+      { data: { id: 'claim:e', name: 'Claim', faveColor: 'lightgreen' } },
+      { data: { id: 'claim:f', name: 'Claim', faveColor: 'lightgreen' } },
+
+      { data: { id: 'target:a', name: 'http://userfeeds.io/', faveColor: 'yellow' } },
+      { data: { id: 'target:b', name: 'https://ipdb.foundation/', faveColor: 'yellow' } },
+      { data: { id: 'target:c', name: 'ipfs:://somehash/', faveColor: 'yellow' } },
+      { data: { id: 'target:d', name: 'http://reddit.com/r/ethereum/', faveColor: 'yellow' } },
+    ]),
+    edges: accountEdges.concat([
+      { data: { source: '0x123', target: 'claim:b', faveColor: 'green' } },
+      { data: { source: '0x456', target: 'claim:a', faveColor: 'green' } },
+      { data: { source: '0xdef', target: 'claim:c', faveColor: 'green' } },
+      { data: { source: '0x456', target: 'claim:d', faveColor: 'green' } },
+      { data: { source: '0xabc', target: 'claim:f', faveColor: 'green' } },
+      { data: { source: '0xghi', target: 'claim:e', faveColor: 'green' } },
+
+      { data: { source: 'claim:a', target: 'target:a', faveColor: 'green' } },
+      { data: { source: 'claim:b', target: 'target:b', faveColor: 'green' } },
+      { data: { source: 'claim:c', target: 'target:c', faveColor: 'green' } },
+      { data: { source: 'claim:d', target: 'target:d', faveColor: 'green' } },
+      { data: { source: 'claim:e', target: 'target:d', faveColor: 'green' } },
+      { data: { source: 'claim:f', target: 'target:b', faveColor: 'green' } },
+    ])
+  },
+  layout: {
+    name: 'cose-bilkent',
+    directed: true,
+    animate: false
+  },
+  style: cytoscape.stylesheet()
+    .selector('node')
+      .css({
+        'shape': 'ellipse',
+        'width': 40,
+        'content': 'data(name)',
+        'text-valign': 'center',
+        'background-color': 'data(faveColor)',
+        'color': 'black',
+        'font-size': '10px',
+      })
+    .selector('edge')
+      .css({
+        'curve-style': 'bezier',
+        'width': 1,
+        'opacity': 0.666,
+        'target-arrow-shape': 'triangle',
+        'line-color': 'data(faveColor)',
+        'source-arrow-color': 'data(faveColor)',
+        'target-arrow-color': 'data(faveColor)'
+      })
+});
+
+
+// Algorithm A
+cytoscape({
+  container: document.querySelector('#algorithms-a .cy'),
+  elements: {
+    nodes: accountNodes.concat([
+      { data: { id: 'claim:a', name: 'Claim', faveColor: 'lightgreen' } },
+      { data: { id: 'claim:b', name: 'Claim', faveColor: 'lightgreen' } },
+      { data: { id: 'claim:c', name: 'Claim', faveColor: 'lightgreen' } },
+      { data: { id: 'claim:d', name: 'Claim', faveColor: 'lightgray' } },
+      { data: { id: 'claim:e', name: 'Claim', faveColor: 'lightgray' } },
+      { data: { id: 'claim:f', name: 'Claim', faveColor: 'lightgray' } },
+
+      { data: { id: 'target:a', name: 'http://userfeeds.io/', faveColor: 'yellow' } },
+      { data: { id: 'target:b', name: 'https://ipdb.foundation/', faveColor: 'yellow' } },
+      { data: { id: 'target:c', name: 'ipfs:://somehash/', faveColor: 'yellow' } },
+      { data: { id: 'target:d', name: 'http://reddit.com/r/ethereum/', faveColor: 'lightgray' } },
+    ]),
+    edges: accountEdges.concat([
+      { data: { source: '0x123', target: 'claim:b', faveColor: 'green' } },
+      { data: { source: '0x456', target: 'claim:a', faveColor: 'green' } },
+      { data: { source: '0xdef', target: 'claim:c', faveColor: 'green' } },
+      { data: { source: '0x456', target: 'claim:d', faveColor: 'lightgray' } },
+      { data: { source: '0xabc', target: 'claim:f', faveColor: 'lightgray' } },
+      { data: { source: '0xghi', target: 'claim:e', faveColor: 'lightgray' } },
+
+      { data: { source: 'claim:a', target: 'target:a', faveColor: 'green' } },
+      { data: { source: 'claim:b', target: 'target:b', faveColor: 'green' } },
+      { data: { source: 'claim:c', target: 'target:c', faveColor: 'green' } },
+      { data: { source: 'claim:d', target: 'target:d', faveColor: 'lightgray' } },
+      { data: { source: 'claim:e', target: 'target:d', faveColor: 'lightgray' } },
+      { data: { source: 'claim:f', target: 'target:b', faveColor: 'lightgray' } },
+    ])
+  },
+  layout: {
+    name: 'cose-bilkent',
+    directed: true,
+    animate: false
+  },
+  style: cytoscape.stylesheet()
+    .selector('node')
+      .css({
+        'shape': 'ellipse',
+        'width': 40,
+        'content': 'data(name)',
+        'text-valign': 'center',
+        'background-color': 'data(faveColor)',
+        'color': 'black',
+        'font-size': '10px',
+      })
+    .selector('edge')
+      .css({
+        'curve-style': 'bezier',
+        'width': 1,
+        'opacity': 0.666,
+        'target-arrow-shape': 'triangle',
+        'line-color': 'data(faveColor)',
+        'source-arrow-color': 'data(faveColor)',
+        'target-arrow-color': 'data(faveColor)'
+      })
+});
+
+// Algorithm B
+cytoscape({
+  container: document.querySelector('#algorithms-b .cy'),
+  elements: {
+    nodes: [
+      { data: { id: '0x123', name: '0x123', faveColor: 'lightgray' } },
+      { data: { id: '0x456', name: '0x456', faveColor: 'lightgray' } },
+      { data: { id: '0x789', name: '0x789', faveColor: 'lightblue' } },
+      { data: { id: '0xabc', name: '0xabc', faveColor: 'lightblue' } },
+      { data: { id: '0xdef', name: '0xdef', faveColor: 'lightblue' } },
+      { data: { id: '0xghi', name: '0xghi', faveColor: 'lightgray' } },
+      { data: { id: '0xjkl', name: '0xjkl', faveColor: 'lightgray' } },
+      { data: { id: '0xmno', name: '0xmno', faveColor: 'lightgray' } },
+
+      { data: { id: 'claim:a', name: 'Claim', faveColor: 'lightgray' } },
+      { data: { id: 'claim:b', name: 'Claim', faveColor: 'lightgray' } },
+      { data: { id: 'claim:c', name: 'Claim', faveColor: 'lightgreen' } },
+      { data: { id: 'claim:d', name: 'Claim', faveColor: 'lightgray' } },
+      { data: { id: 'claim:e', name: 'Claim', faveColor: 'lightgray' } },
+      { data: { id: 'claim:f', name: 'Claim', faveColor: 'lightgreen' } },
+
+      { data: { id: 'target:a', name: 'http://userfeeds.io/', faveColor: 'lightgray' } },
+      { data: { id: 'target:b', name: 'https://ipdb.foundation/', faveColor: 'yellow' } },
+      { data: { id: 'target:c', name: 'ipfs:://somehash/', faveColor: 'yellow' } },
+      { data: { id: 'target:d', name: 'http://reddit.com/r/ethereum/', faveColor: 'lightgray' } },
+    ],
+    edges: [
+      { data: { source: '0x123', target: '0x456', faveColor: 'lightgray' } },
+      { data: { source: '0x456', target: '0x123', faveColor: 'lightgray' } },
+      { data: { source: '0x456', target: '0x789', faveColor: 'lightgray' } },
+      { data: { source: '0x456', target: '0xdef', faveColor: 'lightgray' } },
+      { data: { source: '0x456', target: '0xmno', faveColor: 'lightgray' } },
+      { data: { source: '0x456', target: '0xjkl', faveColor: 'lightgray' } },
+      { data: { source: '0xabc', target: '0xjkl', faveColor: 'lightgray' } },
+      { data: { source: '0xdef', target: '0xghi', faveColor: 'lightgray' } },
+      { data: { source: '0xmno', target: '0xabc', faveColor: 'lightgray' } },
+
+      { data: { source: '0x123', target: 'claim:b', faveColor: 'lightgray' } },
+      { data: { source: '0x456', target: 'claim:a', faveColor: 'lightgray' } },
+      { data: { source: '0xdef', target: 'claim:c', faveColor: 'green' } },
+      { data: { source: '0x456', target: 'claim:d', faveColor: 'lightgray' } },
+      { data: { source: '0xabc', target: 'claim:f', faveColor: 'green' } },
+      { data: { source: '0xghi', target: 'claim:e', faveColor: 'lightgray' } },
+
+      { data: { source: 'claim:a', target: 'target:a', faveColor: 'lightgray' } },
+      { data: { source: 'claim:b', target: 'target:b', faveColor: 'lightgray' } },
+      { data: { source: 'claim:c', target: 'target:c', faveColor: 'green' } },
+      { data: { source: 'claim:d', target: 'target:d', faveColor: 'lightgray' } },
+      { data: { source: 'claim:e', target: 'target:d', faveColor: 'lightgray' } },
+      { data: { source: 'claim:f', target: 'target:b', faveColor: 'green' } },
+    ]
+  },
+  layout: {
+    name: 'cose-bilkent',
+    directed: true,
+    animate: false
+  },
+  style: cytoscape.stylesheet()
+    .selector('node')
+      .css({
+        'shape': 'ellipse',
+        'width': 40,
+        'content': 'data(name)',
+        'text-valign': 'center',
+        'background-color': 'data(faveColor)',
+        'color': 'black',
+        'font-size': '10px',
+      })
+    .selector('edge')
+      .css({
+        'curve-style': 'bezier',
+        'width': 1,
+        'opacity': 0.666,
+        'target-arrow-shape': 'triangle',
+        'line-color': 'data(faveColor)',
+        'source-arrow-color': 'data(faveColor)',
+        'target-arrow-color': 'data(faveColor)'
+      })
+});
+
+
+// Algorithm C
+cytoscape({
+  container: document.querySelector('#algorithms-c .cy'),
+  elements: {
+    nodes: [
+      { data: { id: '0x123', name: '0x123', faveColor: 'lightgray' } },
+      { data: { id: '0x456', name: '0x456', faveColor: 'lightblue' } },
+      { data: { id: '0x789', name: '0x789', faveColor: 'lightgray' } },
+      { data: { id: '0xabc', name: '0xabc', faveColor: 'lightgray' } },
+      { data: { id: '0xdef', name: '0xdef', faveColor: 'lightgray' } },
+      { data: { id: '0xghi', name: '0xghi', faveColor: 'lightgray' } },
+      { data: { id: '0xjkl', name: '0xjkl', faveColor: 'lightgray' } },
+      { data: { id: '0xmno', name: '0xmno', faveColor: 'lightgray' } },
+
+      { data: { id: 'claim:a', name: 'Claim', faveColor: 'lightgreen' } },
+      { data: { id: 'claim:b', name: 'Claim', faveColor: 'lightgray' } },
+      { data: { id: 'claim:c', name: 'Claim', faveColor: 'lightgray' } },
+      { data: { id: 'claim:d', name: 'Claim', faveColor: 'lightgreen' } },
+      { data: { id: 'claim:e', name: 'Claim', faveColor: 'lightgray' } },
+      { data: { id: 'claim:f', name: 'Claim', faveColor: 'lightgray' } },
+
+      { data: { id: 'target:a', name: 'http://userfeeds.io/', faveColor: 'yellow' } },
+      { data: { id: 'target:b', name: 'https://ipdb.foundation/', faveColor: 'lightgray' } },
+      { data: { id: 'target:c', name: 'ipfs:://somehash/', faveColor: 'lightgray' } },
+      { data: { id: 'target:d', name: 'http://reddit.com/r/ethereum/', faveColor: 'yellow' } },
+    ],
+    edges: [
+      { data: { source: '0x123', target: '0x456', faveColor: 'lightgray' } },
+      { data: { source: '0x456', target: '0x123', faveColor: 'lightgray' } },
+      { data: { source: '0x456', target: '0x789', faveColor: 'lightgray' } },
+      { data: { source: '0x456', target: '0xdef', faveColor: 'lightgray' } },
+      { data: { source: '0x456', target: '0xmno', faveColor: 'lightgray' } },
+      { data: { source: '0x456', target: '0xjkl', faveColor: 'lightgray' } },
+      { data: { source: '0xabc', target: '0xjkl', faveColor: 'lightgray' } },
+      { data: { source: '0xdef', target: '0xghi', faveColor: 'lightgray' } },
+      { data: { source: '0xmno', target: '0xabc', faveColor: 'lightgray' } },
+
+      { data: { source: '0x123', target: 'claim:b', faveColor: 'lightgray' } },
+      { data: { source: '0x456', target: 'claim:a', faveColor: 'green' } },
+      { data: { source: '0xdef', target: 'claim:c', faveColor: 'lightgray' } },
+      { data: { source: '0x456', target: 'claim:d', faveColor: 'green' } },
+      { data: { source: '0xabc', target: 'claim:f', faveColor: 'lightgray' } },
+      { data: { source: '0xghi', target: 'claim:e', faveColor: 'lightgray' } },
+
+      { data: { source: 'claim:a', target: 'target:a', faveColor: 'green' } },
+      { data: { source: 'claim:b', target: 'target:b', faveColor: 'lightgray' } },
+      { data: { source: 'claim:c', target: 'target:c', faveColor: 'lightgray' } },
+      { data: { source: 'claim:d', target: 'target:d', faveColor: 'green' } },
+      { data: { source: 'claim:e', target: 'target:d', faveColor: 'lightgray' } },
+      { data: { source: 'claim:f', target: 'target:b', faveColor: 'lightgray' } },
+    ]
+  },
+  layout: {
+    name: 'cose-bilkent',
+    directed: true,
+    animate: false
+  },
+  style: cytoscape.stylesheet()
+    .selector('node')
+      .css({
+        'shape': 'ellipse',
+        'width': 40,
+        'content': 'data(name)',
+        'text-valign': 'center',
+        'background-color': 'data(faveColor)',
+        'color': 'black',
+        'font-size': '10px',
+      })
+    .selector('edge')
+      .css({
+        'curve-style': 'bezier',
+        'width': 1,
+        'opacity': 0.666,
+        'target-arrow-shape': 'triangle',
+        'line-color': 'data(faveColor)',
+        'source-arrow-color': 'data(faveColor)',
+        'target-arrow-color': 'data(faveColor)'
+      })
+});
+
+
+</script>
+
+<script src="js/impress.js"></script>
+<script src="js/impressConsole.js"></script>
+<script>
+    impress().init();
+    impressConsole().init();
+    impressConsole().open(); // If you want them to open automatically
+</script>
+
+</body>
+</html>
