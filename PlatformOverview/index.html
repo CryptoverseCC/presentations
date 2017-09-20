@@ -88,14 +88,21 @@
 <div id="impress">
 
     <div id="about" class="step" data-x="0" data-y="-10000" data-z="0" data-scale="1">
-        Start
-
-        G
-        g@userfeeds.io
+        G<br/>
+        CTO/co-founder<br/>
+        <br/>
+        <span class="email">g@userfeeds.io</span>
     </div>
 
-    <div id="talk" class="step" data-x="0" data-y="-9000" data-z="0" data-scale="1">
+    <div id="talk" class="step" data-x="0" data-y="-8000" data-z="0" data-scale="1">
         High level overview of Userfeeds Platform technology.
+    </div>
+
+    <div id="purpous" class="step" data-x="0" data-y="-6000" data-z="0" data-scale="1">
+        Purpose: Content Rankings<br/>
+        <br/>
+        What is `content`?<br/>
+        Ranking based on what?<br/>
     </div>
 
     <div id="userfeeds-platform" class="step" data-x="0" data-y="0" data-scale="10">
@@ -103,32 +110,23 @@
     </div>
 
     <div id="input" class="step" data-x="-5000" data-y="0" data-scale="6">
-        <pre>
-        - Data Sources
-            - Scarcity data
-            - Claims data
-        - Data processing
-        </pre>
+        Input
     </div>
 
-    <div id="claim" class="step" data-x="-5000" data-y="0" data-z="-500" data-rotate-y="90" data-scale="1">    
-        What is Claim?
+    <div id="claim" class="step" data-x="-5000" data-y="0" data-z="-500" data-rotate-y="0" data-scale="1">    
+        <p>
+          Blockchain data
+          <br/>
+          Token transfers, accounts <div class="account">0xabc</div>
+          
+        </p>
         <br/>
-        Digital equivalent of pointing a finger
-        <br/>
-        Me (private key) --points-to--> Something (URL, other Identifier)
-    </div>
-
-    <div id="claim-example" class="step" data-x="-5000" data-y="0" data-z="-1000" data-rotate-y="90" data-scale="1">    
-        <pre>
-          {
-            claim: {
-              target: "some identifier"
-            }
-            signature: {...signed by private key X ...}
-          }
-        </pre>
-        Real schema is a bit more complex with additional metadata that can be passed along with basic claim.
+        <p>
+          Claims<div class="claim">Claim</div>
+          Digital equivalent of pointing a finger
+          <br/>
+          Me (private key) --points-to--> Something (URL, other Identifier)
+        </p>
     </div>
 
     <div id="overview-claim-source" class="step overview" data-x="-5000" data-y="0" data-scale="6">
@@ -136,25 +134,26 @@
 
     <div id="source-ethereum" class="step" data-x="-7000" data-y="-1000" data-scale="1">
         Ethereum Network
-
+        <br/>
         Scarcity: value transfers (ETH/Tokens)
+        <br/>
         Claims: contract events
 
         <div class="cloud"><span>Ethereum Network</span></div>
     </div>
 
     <div id="source-http" class="step" data-x="-7000" data-y="0" data-scale="1">
-        Internet (HTTP)
-
+        Internet
+        <br/>
         Claims: through simple HTTP API
 
         <div class="cloud"><span>Internet</span></div>
     </div>
 
     <div id="source-other" class="step" data-x="-7000" data-y="1000" data-scale="1">
-        Bitcoin (value transfers)
-        IPDB (value transfers, claims)
-        Other scarcity/claims sources
+        Bitcoin (value transfers)<br/>
+        IPDB (value transfers, claims)<br/>
+        Other scarcity/claims sources<br/>
 
         <div class="cloud bitcoin"><span>Bitcoin</span></div>
         <div class="cloud ipdb"><span>IPDB</span></div>
@@ -165,9 +164,6 @@
             <li>Userfeeds Paltform is blockchain agnostic</li>
           </ul>
         </div>
-    </div>
-
-    <div id="overview-source-data-processing" class="step overview" data-x="-5000" data-y="0" data-scale="6">
     </div>
 
     <div id="data-processing" class="step" data-x="-3000" data-y="0" data-scale="2">
@@ -190,7 +186,6 @@
           <div class="claim">Claim</div>
           <div class="claim">Claim</div>
         </div>
-        <div class="processing">Data processing</div>
     </div>
 
     <div id="database" class="step" data-x="0" data-y="0" data-scale="5">
@@ -211,13 +206,31 @@
     </div>
 
     <div id="output" class="step" data-x="5000" data-y="0" data-scale="6">
-        <pre>
-        Output:
-        - Algorithms
-        - API
+        Output
+    </div>
 
-        Interfaces
-        </pre>
+    <div id="api" class="step" data-x="3500" data-y="0" data-scale="1">
+        API (HTTP)
+        <hr/>
+        <br/>
+        <i style="word-wrap: break-word;"><a href="https://api.userfeeds.io/ranking/0xcd73518680ab60ec2253841909d3448bc60f0665/links/?asset=rinkeby">https://api.userfeeds.io/ranking/0xcd73518680ab60ec2253841909d3448bc60f0665/links/?asset=rinkeby</a></i>
+        <br/>
+        <br/>
+        Run algorithm: <br/>
+        <strong>links</strong> <br/>
+        on data associated with identifier: <br/>
+        <strong>0xcd73518680ab60ec2253841909d3448bc60f0665</strong> <br/>
+        from perspective of asset: <br/>
+        <strong>rinkeby</strong>
+
+        <div class="notes">
+          <ul>
+            <li>Why not some sophisticated solution or distributed architecture?</li>
+            <li>We decided to use HTTP API because of it's simplicity and wide spread use.</li>
+            <li>Practically every developer knows how to retrieve data using simple HTTP GET request.</li>
+            <li>The mystery is only limited to URL construction and this can easily demonstrated with examples and documentation.</li>
+            <li>* Read only with exception for sending claims through HTTP</li>
+        </div>
     </div>
 
     <div id="algorithms" class="step" data-x="2600" data-y="0" data-scale="1">
@@ -290,56 +303,9 @@
             <li>Available through centralized platforms (eg. github.com/bitbuket) and decentralized sources ipfs/swarm etc.</li>
           </ul>
         </div>
-    </div>
-
-    <div id="overview-algo-api" class="step overview" data-x="5000" data-y="0" data-scale="6">
-    </div>
-
-    <div id="api" class="step" data-x="3500" data-y="0" data-scale="1">
-        API (HTTP)
-        <hr/>
-        <br/>
-        <i style="word-wrap: break-word;"><a href="https://api.userfeeds.io/ranking/0xcd73518680ab60ec2253841909d3448bc60f0665/links/?asset=rinkeby">https://api.userfeeds.io/ranking/0xcd73518680ab60ec2253841909d3448bc60f0665/links/?asset=rinkeby</a></i>
-        
-        <div class="notes">
-          <ul>
-            <li>Why not some sophisticated solution or distributed architecture?</li>
-            <li>We decided to use HTTP API because of it's simplicity and wide spread use.</li>
-            <li>Practically every developer knows how to retrieve data using simple HTTP GET request.</li>
-            <li>The mystery is only limited to URL construction and this can easily demonstrated with examples and documentation.</li>
-            <li>* Read only with exception for sending claims through HTTP</li>
-        </div>
-    </div>
+    </div>    
 
     <div id="overview-api-interfaces" class="step overview" data-x="5000" data-y="0" data-scale="6">
-    </div>
-
-    <div id="interfaces" class="step" data-x="4000" data-y="0" data-scale="1">
-        Interfaces
-        <br/>
-        Everything we see and hear is coming from some king of interface.
-        
-        <div class="notes">
-          <ul>
-            <li>Interface examples: facebook feed, subreddits, twitter feed</li>
-          </ul>
-        </div>
-    </div>
-
-    <div id="interfaces-problems" class="step" data-x="4500" data-y="0" data-scale="1">
-        Current interfaces problems
-        <br/>
-        Interfaces gather our attention and direct it according to their owners decisions to maximize profits according to its monetization model.
-      
-        <div class="notes">
-          <ul>
-            <li>Example: `You might also like` section on any webpage, `Recommended` etc all of those are there because it's beneficial for site owner to keep you longer on site or give you more buying options</li>
-            <li>Current monetization models are mostly ad driven</li>
-            <li>Attention is extracted mercilessly because the risks for extracting attention are pushed back in time</li>
-            <li>Current interfaces don't want to answer question: `Why do I see this?`</li>
-            <li>We want change that and make it possible to investigate exactly what data were used and what algorithms to display information that you see.</li>
-          </ul>
-        </div>
     </div>
 
     <div id="link-exchange" class="step" data-x="5000" data-y="0" data-scale="1">
@@ -357,7 +323,7 @@
     </div>
 
     <div id="interfaces-other" class="step" data-x="5500" data-y="0" data-scale="1">
-      Interface Examples:
+      Other Examples:
 
       <ul>
         <li>Attention Guard</li>
@@ -379,10 +345,12 @@
     </div>
 
     <div id="data-science" class="step" data-x="0" data-y="3000" data-scale="3">
-        Data enrichment:
+        Data analysis
 
-        Data Scientists will be able to download whole dataset and process it in ways that can be done only offline.
-        Later they will be able to post results of their processing as `claims` back to dataset for `algorithms` use.
+        <div class="notes">
+          Data Scientists will be able to download whole dataset and process it in ways that can be done only offline.
+          Later they will be able to post results of their processing as `claims` back to dataset for `algorithms` to use.
+        </div>
     </div>
 
     <div id="data-science-fraud-detection" class="step" data-x="-1000" data-y="3800" data-scale="1">

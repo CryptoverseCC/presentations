@@ -208,6 +208,16 @@ a:focus {
     opacity: 1 
 }
 
+#about {
+    padding: 40px;
+}
+
+#about .email {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
 #about.future, #about.past { 
     opacity: 0;
     transition: opacity 1s;
@@ -263,7 +273,7 @@ a:focus {
     left: 0;
     width: 0;
     height: 200px;
-    border-left: 1000px solid red;
+    border-left: 1000px solid blue;
     border-top: 300px solid transparent;
     border-bottom: 300px solid transparent;
 }
@@ -369,7 +379,7 @@ a:focus {
 
 #data-processing .random {
     position: absolute;
-    width: 300px;
+    width: 600px;
     height: 500px;
     top: 100px;
     left: 300px;
@@ -472,7 +482,7 @@ a:focus {
     left: 0;
     width: 0;
     height: 200px;
-    border-right: 1000px solid blue;
+    border-right: 1000px solid green;
     border-top: 300px solid transparent;
     border-bottom: 300px solid transparent;
 }
@@ -576,7 +586,7 @@ a:focus {
     left: 0;
     width: 400px;
     height: 0;
-    border-bottom: 800px solid red;
+    border-bottom: 800px solid yellow;
     border-left: 300px solid transparent;
     border-right: 300px solid transparent;
 }
